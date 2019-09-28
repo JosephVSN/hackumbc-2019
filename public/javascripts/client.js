@@ -1,3 +1,9 @@
+//global variables
+var myLatLng = {lat:39.2558586, lng:-76.7116755};
+var map = new GMap2(document.getElementById('map'));
+map.setCenter(myLatLng);
+var mgr = new MarkerManager(map);
+
 // Creates the Google Map (Thanks for the code, Google!)
 // source: https://developers.google.com/maps/documentation/javascript/adding-a-google-map
 var initMap = function() {
@@ -62,3 +68,17 @@ $(document).ready(function() {
     fillList();
     initMap();
 });
+
+var fillMap = function(){
+
+    var i;
+    for(i = 0; i < numRows; i ++){
+        row = db[i]; //not quite sure if this works
+        var marker = new google.maps.Marker({
+            position: {Lat:row.LocationLa, Lat:row.LocationLo},
+            map: map,
+            title: row.Time
+        });
+        mgr.addMarker(merker);  
+    }
+}

@@ -54,13 +54,18 @@ var fillList = function() {
         url: '/getSpots',
         type: 'GET',
         success: function(res) {
-            console.log(res);
-            console.log(typeof(res));
+            res.array.forEach(element => {
+                var listItem = "<li class ='list group-item'>" + JSON.stringify(element) + "<\li>";
+                $('#spotList').append(listItem);
+
+            });
         },
         error: function(error) {
             console.log(error);
         }
     })
+    //iterate through res, make each entry a list item, and add to spotList
+    
 };
 
 $(document).on("click", "#leavingButton", function() {

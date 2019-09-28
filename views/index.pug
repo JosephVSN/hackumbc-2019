@@ -1,6 +1,8 @@
 extends layout
 
 block content
+  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+  script(src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap")
   script(src="javascripts/client.js")
   h1= title
   p Welcome to #{title}

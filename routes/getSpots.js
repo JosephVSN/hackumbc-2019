@@ -3,9 +3,11 @@ var router = express.Router();
 var db = require('../public/javascripts/db.js')
 
 // Request the newest 25 parking spots from the database
-router.get('/getSpots', function(req, res) {
-    var emptySpots = db.getSpots();
-    return res.send(emptySpots);
+router.get('/', function(req, res, next) {
+    db.getListing(function(rows) {
+        res.header("Content-Type", 'application/json');
+        res.send(rows);
+    });
 });
 
 module.exports = router;

@@ -9,38 +9,39 @@ var initMap = function() {
 
 // Gets the user's current geolocation (lat, long)
 // source: https://developers.google.com/maps/documentation/javascript/geolocation
-var getLocation = function() {
+var addSpot = function() {
     console.log("Getting current location..");
-    var pos = null;
+    // Get location
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
-            pos = {
+            var pos = {
                 lat: position.coords.latitude,
                 lng: position.coords.longitude
             };
+            var d = new Date();
+            var year = d.getFullYear();
+            var month = d.getMonth();
+            var day = d.getDay();
+            var second = d.getSeconds();
+            var minute = d.getMinutes();
+            var hour = d.getHours();
+            
+            var dateString = "%i/%i/%i-%i:%i:%i" % (year, month, day, hour, minute, second);
+
+            // Add to the SQL server
+                // Will send an Ajax request to the server
+            // Send a refresh request
+                // Will send an Ajax request to the server
+            // Add to the map
+                // Do a select from the database
         });
     }
-    return pos;
 }
 
-// Adds a new marker on the map with the user's location
-var addSpot = function() {
-    consolelog("Adding current location..");
-    
-    // 1. Get location
-    var pos = getLocation();
-    if (pos === null) {
-        console.log("ERROR: Couldn't get user's location");
-        return -1;
-    }
-    
-    // 2. Add to the map
-
-    // 3. Add to the SQL server
-
-    // 4. Refresh the list
-
-}
+$(document).on("click", "#leavingButton", function() {
+    console.log("Adding new empty spot..");
+    addSpot();
+});
 
 $(document).ready(function() {
     console.log("Running!");

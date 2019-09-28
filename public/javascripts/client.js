@@ -54,10 +54,9 @@ var fillList = function() {
         url: '/getSpots',
         type: 'GET',
         success: function(res) {
-            res.array.forEach(element => {
-                var listItem = "<li class ='list group-item'>" + JSON.stringify(element) + "<\li>";
+            res.forEach(element => {
+                var listItem = "<li class ='list-group-item'>" + element.LocationLA + ", " + element.LocationLO + " (" + element.Time + ")<\li>";
                 $('#spotList').append(listItem);
-
             });
         },
         error: function(error) {

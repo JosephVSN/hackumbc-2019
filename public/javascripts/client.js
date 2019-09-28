@@ -38,6 +38,20 @@ var addSpot = function() {
     }
 }
 
+var fillList = function() {
+    console.log("Doing AJAX call");
+    $.ajax({
+        url: '/getSpots',
+        type: 'GET',
+        success: function(res) {
+            console.log(res);
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    })
+};
+
 $(document).on("click", "#leavingButton", function() {
     console.log("Adding new empty spot..");
     addSpot();
@@ -45,5 +59,6 @@ $(document).on("click", "#leavingButton", function() {
 
 $(document).ready(function() {
     console.log("Running!");
+    fillList();
     initMap();
 });

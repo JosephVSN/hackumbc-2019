@@ -1,5 +1,5 @@
 CREATE TABLE Parking
-(Time TIME NOT NULL, 
+(Time SMALLDATETIME NOT NULL, 
 LocationLO FLOAT NOT NULL, 
 LocationLA FLOAT NOT NULL, 
 PRIMARY KEY (Time, LocationLO, LocationLA));

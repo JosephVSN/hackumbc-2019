@@ -7,6 +7,42 @@ var initMap = function() {
         document.getElementById('map'), {zoom: 16, center: umbcCoords});
 }
 
+// Gets the user's current geolocation (lat, long)
+// source: https://developers.google.com/maps/documentation/javascript/geolocation
+var addSpot = function() {
+    console.log("Getting current location..");
+    // Get location
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude
+            };
+            var d = new Date();
+            var year = d.getFullYear();
+            var month = d.getMonth();
+            var day = d.getDay();
+            var second = d.getSeconds();
+            var minute = d.getMinutes();
+            var hour = d.getHours();
+            
+            var dateString = "%i/%i/%i-%i:%i:%i" % (year, month, day, hour, minute, second);
+
+            // Add to the SQL server
+                // Will send an Ajax request to the server
+            // Send a refresh request
+                // Will send an Ajax request to the server
+            // Add to the map
+                // Do a select from the database
+        });
+    }
+}
+
+$(document).on("click", "#leavingButton", function() {
+    console.log("Adding new empty spot..");
+    addSpot();
+});
+
 $(document).ready(function() {
     console.log("Running!");
     initMap();

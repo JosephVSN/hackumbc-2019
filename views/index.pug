@@ -4,13 +4,14 @@ script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJl5SRC2kNpVfyyC3i
 script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js")
 script(src="javascripts/client.js")
 <link href="../stylesheets/style.css" rel="stylesheet">
-<div class="container-fluid">
+<div class="container-fluid" id="container">
   <div class="row">
     <div class="col-md-8">
-      div(id="map", style="height:100%;width:100%;")
+      div(id="map")
     </div>
     <div class="col-md-4">
-      <ul class="list-group">
+      <button type="button" class="btn btn-primary" id="leavingButton">I'm leaving!</button>
+      <ul class="list-group" id="spotList">
         <li class="list-group-item">test</li>
         <li class="list-group-item">test</li>
         <li class="list-group-item">test</li>
@@ -29,7 +30,6 @@ script(src="javascripts/client.js")
         <li class="list-group-item">test</li>
         <li class="list-group-item">test</li>
       </ul>
-      <button type="button" class="btn btn-primary" id="leavingButton">I'm leaving!</button>
     </div>
   </div>
 </div>

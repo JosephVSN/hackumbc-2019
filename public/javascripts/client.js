@@ -33,7 +33,7 @@ var addSpot = function() {
             var hour = d.getHours();
             
             var dateString = "%i/%i/%i-%i:%i:%i" % (year, month, day, hour, minute, second);
-
+            console.log(pos);
             // Add to the SQL server
                 // Will send an Ajax request to the server
             // Send a refresh request
@@ -45,12 +45,17 @@ var addSpot = function() {
 }
 
 var fillList = function() {
+    // Empty the current list
+    $('#spotList').empty();
+
+    // Get the new data
     console.log("Doing AJAX call");
     $.ajax({
         url: '/getSpots',
         type: 'GET',
         success: function(res) {
             console.log(res);
+            console.log(typeof(res));
         },
         error: function(error) {
             console.log(error);

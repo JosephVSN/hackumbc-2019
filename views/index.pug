@@ -1,8 +1,35 @@
-extends layout
-
-block content
-  script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
-  script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJl5SRC2kNpVfyyC3ihmd5haSN2tmdeqs")
-  script(src="javascripts/client.js")  
-  <div id="map" style="height:650px;width:1250px;"></div>
-  button(type="button", class="button", id="leavingButton", style="height:25px;width:100px;")
+script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js")
+script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBJl5SRC2kNpVfyyC3ihmd5haSN2tmdeqs")
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js")
+script(src="javascripts/client.js")
+<link href="../stylesheets/style.css" rel="stylesheet">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-8">
+      div(id="map", style="height:100%;width:100%;")
+    </div>
+    <div class="col-md-4">
+      <ul class="list-group">
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+        <li class="list-group-item">test</li>
+      </ul>
+      <button type="button" class="btn btn-primary" id="leavingButton">I'm leaving!</button>
+    </div>
+  </div>
+</div>

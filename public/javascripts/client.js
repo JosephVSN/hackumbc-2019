@@ -71,10 +71,8 @@ var addSpot = function() {
                     console.log(error);
                 }
             });
-            // Add to the map
-                // Do a select from the database
-            // Send a refresh request
-                // do a local refresh
+            fillList();
+            initMap();
         });
     } else {
         console.log("Location not found");
@@ -107,6 +105,30 @@ var fillList = function() {
         }
     })    
 };
+
+var refreshMap = function() {
+    console.log("Doing AJAX call");
+    markerArray.empty(); // Clean markers
+    $.ajax({
+        url: '/getSpots',
+        type: 'GET',
+        success: function(res) {
+            res.forEach(element => {
+                console.log("Adding marker..");
+                var marker = new google.maps.Marker({
+                    position: {lat:element.LocationLA, lng:element.LocationLO},
+                    map: map,
+                    title: element.id.toString()
+                });
+                markerArray.push(marker);
+            });
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    })
+};
+
 $(document).on("click", "#deleteButton", function() {
     // Get the parent data
     var rowData = $(this).parent().text();
@@ -150,7 +172,3 @@ $(document).ready(function() {
     fillList();
     initMap();
 });
-
-var fillMap = function(){
-
-}

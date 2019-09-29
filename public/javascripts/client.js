@@ -164,6 +164,7 @@ $(document).on("click", "#deleteButton", function() {
         }
         index++;
     });
+    fillList();
 });
 
 $(document).on("click", "#leavingButton", function() {

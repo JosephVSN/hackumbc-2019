@@ -11,6 +11,25 @@ var initMap = function() {
     var umbcCoords = {lat:39.2558586, lng:-76.7116755};
     var map = new google.maps.Map(
         document.getElementById('map'), {zoom: 16, center: umbcCoords});
+    // Create markers
+    console.log("Doing AJAX call");
+    $.ajax({
+        url: '/getSpots',
+        type: 'GET',
+        success: function(res) {
+            res.forEach(element => {
+                console.log("Adding marker..");
+                var marker = new google.maps.Marker({
+                    position: {lat:element.LocationLA, lng:element.LocationLO},
+                    map: map,
+                    title: element.id + " - " + element.Time
+                });
+            });
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    })
 }
 
 // Gets the user's current geolocation (lat, long)
@@ -32,7 +51,7 @@ var addSpot = function() {
             var minute = d.getMinutes();
             var hour = d.getHours();
             
-            var dateString = "%i/%i/%i-%i:%i:%i" % (year, month, day, hour, minute, second);
+            var dateString = "%i/%i/%i %i:%i:%i" % (year, month, day, hour, minute, second);
             console.log(pos);
             // Add to the SQL server
                 // Will send an Ajax request to the server
@@ -80,14 +99,4 @@ $(document).ready(function() {
 
 var fillMap = function(){
 
-    var i;
-    for(i = 0; i < numRows; i ++){
-        row = db[i]; //not quite sure if this works
-        var marker = new google.maps.Marker({
-            position: {Lat:row.LocationLa, Lat:row.LocationLo},
-            map: map,
-            title: row.Time
-        });
-        mgr.addMarker(merker);  
-    }
 }

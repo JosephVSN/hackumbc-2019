@@ -89,15 +89,19 @@ var fillList = function() {
 
     // Get the new data
     console.log("Doing AJAX call");
+    var listCount = 0;
     $.ajax({
         url: '/getSpots',
         type: 'GET',
         success: function(res) {
             res.forEach(element => {
-                var listItemDiv = "<div class='spot-list-group'>"
-                listItemDiv += "<li class ='list-group-item'>(" + element.id + ") Lat: " + element.LocationLA + ", Long: " + element.LocationLO + " (" + element.Time + ")>";
-                listItemDiv += '<button type="button" class="btn btn-danger" id="deleteButton">X</button></li></div>'
-                $('#spotList').append(listItemDiv);
+                if (listCount < 9) {
+                    var listItemDiv = "<div class='spot-list-group'>"
+                    listItemDiv += "<li class ='list-group-item'>(" + element.id + ") Lat: " + element.LocationLA + ", Long: " + element.LocationLO + " (" + element.Time + ")>";
+                    listItemDiv += '<button type="button" class="btn btn-danger" id="deleteButton">X</button></li></div>'
+                    $('#spotList').append(listItemDiv);
+                    listCount++;
+                }
             });
         },
         error: function(error) {

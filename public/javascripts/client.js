@@ -82,9 +82,7 @@ var fillList = function() {
         error: function(error) {
             console.log(error);
         }
-    })
-    //iterate through res, make each entry a list item, and add to spotList
-    
+    })    
 };
 
 $(document).on("click", "#leavingButton", function() {

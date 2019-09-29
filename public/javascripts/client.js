@@ -32,7 +32,8 @@ var addSpot = function() {
             var minute = d.getMinutes();
             var hour = d.getHours();
             
-            var dateString = "%i/%i/%i-%i:%i:%i" % (year, month, day, hour, minute, second);
+            var dateString = day + "/" + month + "/" + year + " - " + hour + ":" + minute + ":" + second;
+            //var dateString = "%i/%i/%i-%i:%i:%i" % (year, month, day, hour, minute, second);
             console.log(pos);
             // Add to the SQL server
                 // Will send an Ajax request to the server

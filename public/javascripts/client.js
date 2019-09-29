@@ -108,7 +108,7 @@ var fillList = function() {
 
 var refreshMap = function() {
     console.log("Doing AJAX call");
-    markerArray.empty(); // Clean markers
+    markerArray = []; // Clean markers
     $.ajax({
         url: '/getSpots',
         type: 'GET',

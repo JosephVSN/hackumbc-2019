@@ -15,3 +15,13 @@ exports.getListing = function(callback) {
        }
     });
 };
+
+exports.addListing = function(rowData){
+    var sqlQuery = "insert into Parking(Time, LocationLA, LocationLO) values("+rowData.Time+","+ rowData.LocationLA+","+ rowData.LocationLO+");";
+    db.run(sqlQuery);
+}
+
+exports.removeListing = function(rowData){
+    var sqlQuery = "delete from Parking where id = " + rowData.id + ";";
+    db.run(sqlQuery);
+}

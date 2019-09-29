@@ -55,7 +55,7 @@ var fillList = function() {
         type: 'GET',
         success: function(res) {
             res.forEach(element => {
-                var listItem = "<li class ='list-group-item'>" + element.LocationLA + ", " + element.LocationLO + " (" + element.Time + ")<\li>";
+                var listItem = "<li class ='list-group-item'>(" + element.id + ") Lat: " + element.LocationLA + ", Long: " + element.LocationLO + " (" + element.Time + ")<\li>";
                 $('#spotList').append(listItem);
             });
         },

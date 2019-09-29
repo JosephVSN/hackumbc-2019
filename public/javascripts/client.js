@@ -107,13 +107,10 @@ var fillList = function() {
         timeout: 3000,
         success: function(res) {
             res.forEach(element => {
-                if (listCount < 6) {
-                    var listItemDiv = "<div class='spot-list-group'>"
-                    listItemDiv += "<li class ='list-group-item' id='spotItem'>Spot: " + element.id + "<br>Time: " + element.Time;
-                    listItemDiv += '<button type="button" class="btn btn-danger" id="deleteButton">Taken</button></li></div>'
-                    $('#spotList').append(listItemDiv);
-                    listCount++;
-                }
+                var listItemDiv = "<div class='spot-list-group'>"
+                listItemDiv += "<li class ='list-group-item' id='spotItem'>Spot: " + element.id + "<br>Time: " + element.Time;
+                listItemDiv += '<button type="button" class="btn btn-danger" id="deleteButton">Taken</button></li></div>'
+                $('#spotList').append(listItemDiv);
             });
         },
         error: function(error) {

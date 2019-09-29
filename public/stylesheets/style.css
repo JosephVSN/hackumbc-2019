@@ -41,8 +41,10 @@
 #spotList {
     padding: 15px 0px 0px 0px;
     width: 100%;
+    height: 650px;
     font-family: 'Open Sans', sans-serif;
     font-size: 85%;
+    overflow: scroll;
 }
 
 #deleteButton {

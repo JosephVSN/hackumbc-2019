@@ -54,12 +54,30 @@ var addSpot = function() {
             //var dateString = "%i/%i/%i-%i:%i:%i" % (year, month, day, hour, minute, second);
             console.log(pos);
             // Add to the SQL server
-                // Will send an Ajax request to the server
-            // Send a refresh request
-                // Will send an Ajax request to the server
+            $.ajax({
+                url: '/addSpot',
+                type: 'POST',
+                async: true,
+                cache: false,
+                data: {
+                    time: dateString,
+                    lat: pos.lat,
+                    long: pos.lng
+                },
+                success: function(res) {
+                    console.log(res);
+                },
+                error: function(error) {
+                    console.log(error);
+                }
+            });
             // Add to the map
                 // Do a select from the database
+            // Send a refresh request
+                // do a local refresh
         });
+    } else {
+        console.log("Location not found");
     }
 }
 
@@ -93,7 +111,6 @@ $(document).on("click", "#deleteButton", function() {
     // Get the parent data
     var rowData = $(this).parent().text();
     rowData = rowData.substring(1, rowData.indexOf(")"));
-    console.log(rowData);
     // Delete from the list
     $(this).parent().remove();
     // Do SQL call to remove from database too
@@ -113,11 +130,7 @@ $(document).on("click", "#deleteButton", function() {
     // Delete marker
     console.log("Deleting marker");
     var index = 0;
-    console.log(markerArray);
     markerArray.forEach(element => {
-        console.log(typeof(element.title));
-        console.log(typeof(rowData));
-        console.log(element.title == rowData);
         if (element.title == rowData) {
             console.log("Found");
             markerArray[index].setMap(null);

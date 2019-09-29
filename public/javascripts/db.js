@@ -16,8 +16,8 @@ exports.getListing = function(callback) {
     });
 };
 
-exports.addListing = function(rowData){
-    var sqlQuery = "insert into Parking(Time, LocationLA, LocationLO) values("+rowData.Time+","+ rowData.LocationLA+","+ rowData.LocationLO+");";
+exports.addListing = function(time, lat, long){
+    var sqlQuery = "insert into Parking(Time, LocationLA, LocationLO) values(" + time + "," + lat + "," + long + ");";
     db.run(sqlQuery);
 }
 

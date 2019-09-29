@@ -20,10 +20,16 @@ var initMap = function() {
                 var img = {
                     url: 'car.png'
                 };
+                var infoWindow = new google.maps.InfoWindow({
+                    content: element.id.toString() + " - " + element.Time
+                });
                 var marker = new google.maps.Marker({
                     position: {lat:element.LocationLA, lng:element.LocationLO},
                     map: map,
                     title: element.id.toString()
+                });
+                marker.addListener('click', function() {
+                    infoWindow.open(map, marker);
                 });
                 markerArray.push(marker);
             });

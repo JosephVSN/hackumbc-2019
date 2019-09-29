@@ -23,8 +23,7 @@ var initMap = function() {
                 var marker = new google.maps.Marker({
                     position: {lat:element.LocationLA, lng:element.LocationLO},
                     map: map,
-                    title: element.id.toString(),
-                    icon: img
+                    title: element.id.toString()
                 });
                 markerArray.push(marker);
             });
@@ -126,8 +125,7 @@ var refreshMap = function() {
                 var marker = new google.maps.Marker({
                     position: {lat:element.LocationLA, lng:element.LocationLO},
                     map: map,
-                    title: element.id.toString(),
-                    icon: "../../image/car.png"
+                    title: element.id.toString()
                 });
                 markerArray.push(marker);
             });

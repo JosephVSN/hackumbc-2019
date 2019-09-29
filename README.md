@@ -2,6 +2,9 @@
 
 parking, plz!!! is a web-app to help UMBC commuters figure out what spots should be open around campus. The app was created for hackUMBC Fall 2019.
 
+# DevPost
+https://devpost.com/software/parking-please
+
 ## Local Deployment
 
 To deploy the app locally and view it, use the following steps:

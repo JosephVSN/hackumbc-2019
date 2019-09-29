@@ -14,6 +14,7 @@ var initMap = function() {
     $.ajax({
         url: '/getSpots',
         type: 'GET',
+        timeout: 3000,
         success: function(res) {
             res.forEach(element => {
                 console.log("Adding marker..");
@@ -68,6 +69,7 @@ var addSpot = function() {
                 type: 'POST',
                 async: true,
                 cache: false,
+                timeout: 3000,
                 data: {
                     time: dateString,
                     lat: pos.lat,
@@ -102,6 +104,7 @@ var fillList = function() {
     $.ajax({
         url: '/getSpots',
         type: 'GET',
+        timeout: 3000,
         success: function(res) {
             res.forEach(element => {
                 if (listCount < 6) {
@@ -125,6 +128,7 @@ var refreshMap = function() {
     $.ajax({
         url: '/getSpots',
         type: 'GET',
+        timeout: 3000,
         success: function(res) {
             res.forEach(element => {
                 console.log("Adding marker..");
@@ -154,6 +158,7 @@ $(document).on("click", "#deleteButton", function() {
         type: 'POST',
         async: true,
         cache: false,
+        timeout: 3000,
         data: {id: rowData},
         success: function(res) {
             console.log(res);

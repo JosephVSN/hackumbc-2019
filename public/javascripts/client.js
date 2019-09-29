@@ -17,10 +17,14 @@ var initMap = function() {
         success: function(res) {
             res.forEach(element => {
                 console.log("Adding marker..");
+                var img = {
+                    url: 'car.png'
+                };
                 var marker = new google.maps.Marker({
                     position: {lat:element.LocationLA, lng:element.LocationLO},
                     map: map,
-                    title: element.id.toString()
+                    title: element.id.toString(),
+                    icon: img
                 });
                 markerArray.push(marker);
             });
@@ -95,10 +99,10 @@ var fillList = function() {
         type: 'GET',
         success: function(res) {
             res.forEach(element => {
-                if (listCount < 9) {
+                if (listCount < 6) {
                     var listItemDiv = "<div class='spot-list-group'>"
-                    listItemDiv += "<li class ='list-group-item'>(" + element.id + ") Lat: " + element.LocationLA + ", Long: " + element.LocationLO + " (" + element.Time + ")>";
-                    listItemDiv += '<button type="button" class="btn btn-danger" id="deleteButton">X</button></li></div>'
+                    listItemDiv += "<li class ='list-group-item' id='spotItem'>Spot: " + element.id + "<br>Time: " + element.Time;
+                    listItemDiv += '<button type="button" class="btn btn-danger" id="deleteButton">Taken</button></li></div>'
                     $('#spotList').append(listItemDiv);
                     listCount++;
                 }
@@ -122,7 +126,8 @@ var refreshMap = function() {
                 var marker = new google.maps.Marker({
                     position: {lat:element.LocationLA, lng:element.LocationLO},
                     map: map,
-                    title: element.id.toString()
+                    title: element.id.toString(),
+                    icon: "../../image/car.png"
                 });
                 markerArray.push(marker);
             });
@@ -136,7 +141,7 @@ var refreshMap = function() {
 $(document).on("click", "#deleteButton", function() {
     // Get the parent data
     var rowData = $(this).parent().text();
-    rowData = rowData.substring(1, rowData.indexOf(")"));
+    rowData = rowData.substring(rowData.indexOf(":")+2, rowData.indexOf("Time"));
     // Delete from the list
     $(this).parent().remove();
     // Do SQL call to remove from database too

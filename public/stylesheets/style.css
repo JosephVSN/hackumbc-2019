@@ -1,7 +1,7 @@
 #epicHeader {
     padding: 15px 0px 0px 15px;
     color: #7D7D7D;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 200%;
     box-sizing: border-box;
 }
@@ -9,25 +9,25 @@
 #version {
     padding: 15px 0px 0px 0px;
     color: #7D7D7D;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: 'Open Sans', sans-serif;
 }
 
 #tagLine {
     padding: 0px 0px 0px 15px;
     color: #7D7D7D;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 100%;
 }
 
 #epicFooter {
     color: #7D7D7D;
-    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     font-size: 75%;
 }
 
 #leavingButton {
     padding: 0px 0px 0px 0px;
-    font-family: "Lucida Console", Monaco, monospace;
+    font-family: 'Open Sans', sans-serif;
     width: 100%;
     height: 40px;
     box-sizing: border-box;
@@ -39,19 +39,25 @@
 }
 
 #spotList {
-    padding: 0px 0px 0px 0px;
-    width 100px;
-    font-family:"Lucida Console", Monaco, monospace;
+    padding: 15px 0px 0px 0px;
+    width: 100%;
+    font-family: 'Open Sans', sans-serif;
     font-size: 85%;
 }
 
 #deleteButton {
-    font-family: "Lucida Console", Monaco, monospace;
-    width:100px;
-    height:25px;
-    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    height:45px;
+    display: inline-block;
+    float: right;
+
 }
 
 #spacer{
     padding: 15px 0px 10px 0px;
+}
+
+#spotItem {
+    display: inline-block;
+    width: 100%;
 }

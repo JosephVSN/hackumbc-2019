@@ -22,6 +22,6 @@ exports.addListing = function(rowData){
 }
 
 exports.removeListing = function(rowData){
-    var sqlQuery = "delete from Parking where id = " + rowData.id + ";";
+    var sqlQuery = "delete from Parking where id = " + rowData + ";";
     db.run(sqlQuery);
 }

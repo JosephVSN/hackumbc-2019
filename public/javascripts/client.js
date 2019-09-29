@@ -20,7 +20,7 @@ var initMap = function() {
                 var marker = new google.maps.Marker({
                     position: {lat:element.LocationLA, lng:element.LocationLO},
                     map: map,
-                    title: element.id + " - " + element.Time
+                    title: element.id.toString()
                 });
                 markerArray.push(marker);
             });
@@ -91,12 +91,41 @@ var fillList = function() {
 };
 $(document).on("click", "#deleteButton", function() {
     // Get the parent data
-    var rowData = $(this).parent()
+    var rowData = $(this).parent().text();
+    rowData = rowData.substring(1, rowData.indexOf(")"));
     console.log(rowData);
     // Delete from the list
     $(this).parent().remove();
     // Do SQL call to remove from database too
-})
+    $.ajax({
+        url: '/removeSpot',
+        type: 'POST',
+        async: true,
+        cache: false,
+        data: {id: rowData},
+        success: function(res) {
+            console.log(res);
+        },
+        error: function(error) {
+            console.log(error);
+        }
+    })
+    // Delete marker
+    console.log("Deleting marker");
+    var index = 0;
+    console.log(markerArray);
+    markerArray.forEach(element => {
+        console.log(typeof(element.title));
+        console.log(typeof(rowData));
+        console.log(element.title == rowData);
+        if (element.title == rowData) {
+            console.log("Found");
+            markerArray[index].setMap(null);
+            markerArray.splice(index, 1);
+        }
+        index++;
+    });
+});
 
 $(document).on("click", "#leavingButton", function() {
     console.log("Adding new empty spot..");

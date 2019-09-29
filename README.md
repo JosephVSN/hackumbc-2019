@@ -11,7 +11,7 @@ To deploy the app locally and view it, use the following steps:
 
 ## View Deployment
 
-The app is currently deployed on https://www.parking-please.appspot.com and at https://bruhimlateforclass.online
+The app is currently deployed on www.parking-please.appspot.com and at www.bruhimlateforclass.online
 
 
 ## Built With

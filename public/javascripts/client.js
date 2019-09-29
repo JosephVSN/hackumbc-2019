@@ -27,7 +27,8 @@ var initMap = function() {
                 var marker = new google.maps.Marker({
                     position: {lat:element.LocationLA, lng:element.LocationLO},
                     map: map,
-                    title: element.id.toString()
+                    title: element.id.toString(),
+                    icon: img
                 });
                 marker.addListener('click', function() {
                     infoWindow.open(map, marker);
@@ -54,13 +55,13 @@ var addSpot = function() {
             };
             var d = new Date();
             var year = d.getFullYear();
-            var month = d.getMonth();
-            var day = d.getDay();
+            var month = d.getMonth() + 1;
+            var day = d.getDate();
             var second = d.getSeconds();
             var minute = d.getMinutes();
             var hour = d.getHours();
             
-            var dateString = day + "/" + month + "/" + year + " - " + hour + ":" + minute + ":" + second;
+            var dateString = month + "/" + day + "/" + year + " " + hour + ":" + minute + ":" + second;
             //var dateString = "%i/%i/%i-%i:%i:%i" % (year, month, day, hour, minute, second);
             console.log(pos);
             // Add to the SQL server

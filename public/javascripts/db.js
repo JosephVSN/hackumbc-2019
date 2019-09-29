@@ -5,7 +5,7 @@ var sqlite3 = require('sqlite3').verbose();
 var db = new sqlite3.Database("ParkingPlease.db");
 
 exports.getListing = function(callback) {
-    var sqlQuery = "select * from 'Parking';";
+    var sqlQuery = "select * from parking order by Time desc;";
     db.all(sqlQuery, (err, rows) => {
        if (err) {
            console.log(err);

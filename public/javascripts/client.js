@@ -1,8 +1,6 @@
 //global variables
 var myLatLng = {lat:39.2558586, lng:-76.7116755};
-//var map = new GMap2(document.getElementById('map'));
-//map.setCenter(myLatLng);
-//var mgr = new MarkerManager(map);
+var markerArray = [];
 
 // Creates the Google Map (Thanks for the code, Google!)
 // source: https://developers.google.com/maps/documentation/javascript/adding-a-google-map
@@ -24,6 +22,7 @@ var initMap = function() {
                     map: map,
                     title: element.id + " - " + element.Time
                 });
+                markerArray.push(marker);
             });
         },
         error: function(error) {
@@ -64,6 +63,10 @@ var addSpot = function() {
     }
 }
 
+var deleteSpotUser = function() {
+    console.log("Deleting marker..");
+}
+
 var fillList = function() {
     // Empty the current list
     $('#spotList').empty();
@@ -75,8 +78,10 @@ var fillList = function() {
         type: 'GET',
         success: function(res) {
             res.forEach(element => {
-                var listItem = "<li class ='list-group-item'>(" + element.id + ") Lat: " + element.LocationLA + ", Long: " + element.LocationLO + " (" + element.Time + ")<\li>";
-                $('#spotList').append(listItem);
+                var listItemDiv = "<div class='spot-list-group'>"
+                listItemDiv += "<li class ='list-group-item'>(" + element.id + ") Lat: " + element.LocationLA + ", Long: " + element.LocationLO + " (" + element.Time + ")>";
+                listItemDiv += '<button type="button" class="btn btn-danger" id="deleteButton">X</button></li></div>'
+                $('#spotList').append(listItemDiv);
             });
         },
         error: function(error) {
@@ -86,6 +91,14 @@ var fillList = function() {
     //iterate through res, make each entry a list item, and add to spotList
     
 };
+$(document).on("click", "#deleteButton", function() {
+    // Get the parent data
+    var rowData = $(this).parent()
+    console.log(rowData);
+    // Delete from the list
+    $(this).parent().remove();
+    // Do SQL call to remove from database too
+})
 
 $(document).on("click", "#leavingButton", function() {
     console.log("Adding new empty spot..");

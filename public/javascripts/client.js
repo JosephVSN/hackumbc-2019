@@ -63,7 +63,7 @@ var addSpot = function() {
             
             var dateString = month + "/" + day + "/" + year + " " + hour + ":" + minute + ":" + second;
             //var dateString = "%i/%i/%i-%i:%i:%i" % (year, month, day, hour, minute, second);
-            console.log(pos);
+            
             // Add to the SQL server
             $.ajax({
                 url: '/addSpot',
@@ -85,7 +85,9 @@ var addSpot = function() {
             });
             fillList();
             initMap();
-        });
+        },
+        function error(msg) {alert('Please enable location services!');},
+        {maximumAge: 10000, timeout: 5000, enableHighAccuracy: true});
     } else {
         console.log("Location not found");
     }

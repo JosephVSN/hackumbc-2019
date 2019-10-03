@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+const rateLimit = require('express-rate-limit');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var getSpotsRouter = require('./routes/getSpots');
@@ -31,6 +31,14 @@ app.use(express.static('image'));
 app.use(function(req, res, next) {
   next(createError(404));
 });
+
+// Rate limit
+const limiter = rateLimit ({
+  windowMS: 15 * 60 * 1000,
+  max: 100 
+});
+
+app.use(limiter); // Applies to all requests - probably should change this in the future to non-gets?
 
 // error handler
 app.use(function(err, req, res, next) {

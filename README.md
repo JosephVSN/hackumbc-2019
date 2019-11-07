@@ -14,7 +14,7 @@ To deploy the app locally and view it, use the following steps:
 
 ## View Deployment
 
-The app is currently deployed on www.parking-please.appspot.com and at www.bruhimlateforclass.online
+The app is currently not deployed anywhere because of the Google Maps API costs.
 
 
 ## Built With
@@ -35,5 +35,5 @@ The app is currently deployed on www.parking-please.appspot.com and at www.bruhi
 ## Acknowledgments
 
 * Yes theres bugs
-* Actual multi-client support is not supported as it was out-of-scope for the competition
+* Actual multi-client support is slow dependent on the platform for hosting (we had a lot of issues with Google cloud but almost none with Heroku)
 * Parking sucks
